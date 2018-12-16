@@ -8,12 +8,19 @@ var numGuesses = 12;
 var correctGuessesCount;
 var wins = 0;
 
+//Play theme music on click
+var theme = new Audio('assets/javascript/music.mp3');
+document.getElementById('music-btn').onclick = function() {
+    theme.play();
+}
+
 //Assign HTML elements to variable of guesses and wins
 document.getElementById("wins").innerHTML = wins;
 document.getElementById("num-guesses").innerHTML = numGuesses;
 
 //Begin game with random word from bank and generate empty letters for length of chosen word
 function start() {
+    
     console.log(guessedLetters);
     guessedLetters = [];
     document.getElementById('all-guesses').style.display = 'none';
@@ -63,9 +70,11 @@ document.onkeyup = function(event) {
       }
     }
     //Conditional outside loop, declaring that if the value of found is still false and ??? then add guessed letters to element for guessed letters
-    //&&
     console.log(guessedLetters);
     if (!found && !guessedLetters.includes(userGuess)) {
+        console.log(arghSound);
+        var arghSound = new Audio('assets/javascript/argh.mp3');
+        arghSound.play();
         document.getElementById('all-guesses').style.display = 'block';
       guessedLetters.push(userGuess);
       document.getElementById("letters-guessed").innerHTML = guessedLetters.join(" ");

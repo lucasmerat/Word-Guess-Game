@@ -10,17 +10,21 @@
     <link rel="stylesheet" type="text/css" media="screen" href="assets/css/style.css" />
 </head>
 <body>
+     <audio id="music" src="assets/javascript/music.mp3" loop="loop"></audio>
     <div class="container">
         <div class="row">
-            <div class="col-12 text-center">
+            <div class="col-3 text-center">
+            </div>
+            <div class="col-8 text-center">
                 <h1>Pirate Word Guess!</h1>
+                <button id="music-btn" class="btn btn-warning">Start theme music</button>
             </div>
         </div>
         <div class="row">
             <div class="rules-stats col-3 text-center">
                 <h2>Rules/Stats</h2>
                 <h4>PRESS ANY KEY TO GET STARTED!</h4>
-                <p>Use your keyboard to guess characters. You have 9 lives. Guess too many incorrect and you walk the plank... or hang... or whatever. Arghhhhhhh</p>
+                <p>Use yer keyboard to guess characters. Yee have 12 guesses. Guess too many incorrectly and ye walk the plank... or hang... or whatever. Arghhhhhhh</p>
                 <p>Wins</p>
                 <p id="wins">0</p>
                 <p>Number of guesses remaining</p>
