@@ -1,0 +1,17 @@
+body {
+    background-image:url("../images/piratemap.jpg");
+    background-size:cover;
+    font-family: 'Pirata One', cursive;
+}
+
+h1 {
+    color:#201f1f;
+    margin-top: 30px;
+    text-shadow: 2px 2px 5px yellow;
+    font-size:2em;
+}
+
+p {
+    text-transform: capitalize;
+    font-size: 1.2em;
+}
