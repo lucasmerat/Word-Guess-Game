@@ -25,3 +25,16 @@ p {
     font-size: 2em;
     letter-spacing: 12px;
 }
+
+#guess1, #guess2, #guess3, #guess4, #guess5, #guess6, #guess7, #guess8, #guess9, #guess10, #guess11, #guess12, #guess13 {
+    display:none;
+}
+
+#you-win {
+    display: none;
+}
+
+#play-again {
+    display:none;
+}
+
