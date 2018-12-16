@@ -8,10 +8,20 @@ h1 {
     color:#201f1f;
     margin-top: 30px;
     text-shadow: 2px 2px 5px yellow;
-    font-size:2em;
+    font-size:3em;
 }
 
 p {
     text-transform: capitalize;
     font-size: 1.2em;
+}
+
+.rules-stats {
+    border: 3px dotted black;
+    height: 436px;
+}
+
+#current-word {
+    font-size: 2em;
+    letter-spacing: 12px;
 }

@@ -3,12 +3,11 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Page Title</title>
+    <title>Pirate Word Guess!</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://fonts.googleapis.com/css?family=Pirata+One" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" media="screen" href="assets/css/style.css" />
-    <script src="javascript.js"></script>
 </head>
 <body>
     <div class="container">
@@ -18,15 +17,37 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-3">
-                <h2 class="text-center">Rules/Stats</h2>
+            <div class="rules-stats col-3 text-center">
+                <h2>Rules/Stats</h2>
+                <h4>PRESS ANY KEY TO GET STARTED!</h4>
                 <p>Use your keyboard to guess characters. You have 9 lives. Guess too many incorrect and you walk the plank... or hang... or whatever. Arghhhhhhh</p>
-                
+                <p>Wins</p>
+                <p id="wins">0</p>
+                <p>Number of guesses remaining</p>
+                <p id="num-guesses">12</p>
             </div>
-            <div class="col-9">
-
+            <div class="col-8 text-center">
+                <h2>Current Word</h2>
+                <p id="current-word">Blah</p>
+                <h2>Letters already guessed</h2>
+                <p id="letters-guessed"></p>
+                <div class="justify-content-center">
+                    <img src="assets/images/guess1.jpg">
+                    <img src="assets/images/guess2.jpg">
+                    <img src="assets/images/guess3.jpg">
+                    <img src="assets/images/guess4.jpg">
+                    <img src="assets/images/guess5.jpg">
+                    <img src="assets/images/guess6.jpg">
+                    <img src="assets/images/guess7.jpg">
+                    <img src="assets/images/guess8.jpg">
+                    <img src="assets/images/guess9.jpg">
+                    <img src="assets/images/guess10.jpg">
+                    <img src="assets/images/guess11.jpg">
+                    <img src="assets/images/guess12.jpg">
+                </div>
             </div>
         </div>
     </div>
+    <script src="assets/javascript/game.js"></script>
 </body>
 </html>
