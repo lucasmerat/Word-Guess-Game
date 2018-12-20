@@ -1,4 +1,3 @@
-/// declared variables for guess (keyboard), empyty array of letters guessed, words, slot for letters of word, a secretword to be chosen from bank, number of wins and guesses
 var userGuess; //Variable to hold the player guess
 var guessedLetters = []; //Empty array to hold guessed letters
 var words = ["ahoy","matey","parrot","cannonball","eyepatch","treasure","pegleg"]; //Array of words in play 
@@ -13,16 +12,17 @@ document.getElementById("music-btn").onclick = function() {
   theme.play();
 };
 
-//Assign HTML elements to variable of guesses and wins
-document.getElementById("wins").innerHTML = wins;
-document.getElementById("num-guesses").innerHTML = numGuesses;
-
 //Begin game with random word from bank and generate empty letters for length of chosen word
 function start() {
+  document.addEventListener("keyup", pressKey);
+  numGuesses = 6;
+  letters = [];
+  document.getElementById("num-guesses").innerHTML = numGuesses;
   guessedLetters = []; //Sets incorrect guessed letter
   document.getElementById("all-guesses").style.display = "none";
   document.getElementById("letters-guessed").innerHTML = guessedLetters.join(" ");
   document.getElementById("you-win").style.display = "none";
+  document.getElementById("you-lose").style.display = "none";
   document.getElementById("play-again").style.display = "none";
   secretWord = words[Math.floor(Math.random() * words.length)]; //Select a random word and assign to secret word
   console.log(secretWord);
@@ -68,17 +68,17 @@ function pressKey(event) {
       console.log(numGuesses); //Log how many incorrect guesses left
       //Displays the correct image for each incorrect guess. Make this a loop?
       if (numGuesses === 5) {
-        document.getElementById("guess1").style.display = "inline-block";
+        document.getElementById("guess1").style.visibility = "visible";
       } else if (numGuesses === 4) {
-        document.getElementById("guess2").style.display = "inline-block";
+        document.getElementById("guess2").style.visibility = "visible";
       } else if (numGuesses === 3) {
-        document.getElementById("guess3").style.display = "inline-block";
+        document.getElementById("guess3").style.visibility = "visible";
       } else if (numGuesses === 2) {
-        document.getElementById("guess4").style.display = "inline-block";
+        document.getElementById("guess4").style.visibility = "visible";
       } else if (numGuesses === 1) {
-        document.getElementById("guess5").style.display = "inline-block";
+        document.getElementById("guess5").style.visibility = "visible";
       } else if (numGuesses === 0) {
-        document.getElementById("guess6").style.display = "inline-block";
+        document.getElementById("guess6").style.visibility = "visible";
       }   
     }
 
@@ -93,6 +93,8 @@ function pressKey(event) {
     if (countBlank === 0) {
       document.removeEventListener("keyup", pressKey);
       document.getElementById("you-win").style.display = "block"; //Show you win graphic
+      wins++;
+      document.getElementById("wins").innerHTML = wins;
       document.getElementById("play-again").style.display = "inline-block"; //Show play again button
       document
         .getElementById("play-again")
@@ -101,10 +103,10 @@ function pressKey(event) {
           var pirateImages = document.getElementsByClassName("hang-img");
           for (var i = 0; i < pirateImages.length; i += 1) {
             // Loop to hide all pirate images when button is clicked
-            pirateImages[i].style.display = "none";
+            pirateImages[i].style.visibility = "hidden";
           }
+          start();
           //I want to make it so I dont have to reload and I can get images to show correctly. But this will do for now
-          location.reload();
         });
 
     }
@@ -114,7 +116,12 @@ function pressKey(event) {
       document.getElementById("play-again").style.display = "inline-block"; //Show play again button
       document.getElementById("play-again").addEventListener("click", function() {
           //I want to make it so I dont have to reload and I can get images to show correctly. But this will do for now
-          location.reload();
+          var pirateImages = document.getElementsByClassName("hang-img");
+          for (var i = 0; i < pirateImages.length; i += 1) {
+            // Loop to hide all pirate images when button is clicked
+            pirateImages[i].style.visibility = "hidden";
+          }
+          start();
         });
   }
 }

@@ -28,7 +28,7 @@ p {
 }
 
 #guess1, #guess2, #guess3, #guess4, #guess5, #guess6, #guess7, #guess8, #guess9, #guess10, #guess11, #guess12, #guess13 {
-    display:none;
+    visibility:hidden;
 }
 
 #you-win {
