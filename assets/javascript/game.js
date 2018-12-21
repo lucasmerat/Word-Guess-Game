@@ -1,6 +1,14 @@
 var userGuess; //Variable to hold the player guess
 var guessedLetters = []; //Empty array to hold guessed letters
-var words = ["ahoy","matey","parrot","cannonball","eyepatch","treasure","pegleg"]; //Array of words in play 
+var words = [
+  "ahoy",
+  "matey",
+  "parrot",
+  "cannonball",
+  "eyepatch",
+  "treasure",
+  "pegleg"
+]; //Array of words in play
 var letters = []; //Empry array to hold blanks which turn to be letters of the secret word
 var secretWord; //To assign word in play
 var numGuesses = 6; //Number incorrect of guesses
@@ -20,7 +28,9 @@ function start() {
   document.getElementById("num-guesses").innerHTML = numGuesses;
   guessedLetters = []; //Sets incorrect guessed letter
   document.getElementById("all-guesses").style.display = "none";
-  document.getElementById("letters-guessed").innerHTML = guessedLetters.join(" ");
+  document.getElementById("letters-guessed").innerHTML = guessedLetters.join(
+    " "
+  );
   document.getElementById("you-win").style.display = "none";
   document.getElementById("you-lose").style.display = "none";
   document.getElementById("play-again").style.display = "none";
@@ -62,24 +72,16 @@ function pressKey(event) {
       arghSound.play();
       document.getElementById("all-guesses").style.display = "block"; //Show area with images of pirate
       guessedLetters.push(userGuess); //Add the guessed letter to the wrong letters array
-      document.getElementById("letters-guessed").innerHTML = guessedLetters.join(" "); //Join the array and add to letters guessed on page
+      document.getElementById(
+        "letters-guessed"
+      ).innerHTML = guessedLetters.join(" "); //Join the array and add to letters guessed on page
       numGuesses--; //Decrease number of incorrect guesses available by 1
       document.getElementById("num-guesses").innerHTML = numGuesses; //Set that value to be the number of guesses on the page
       console.log(numGuesses); //Log how many incorrect guesses left
-      //Displays the correct image for each incorrect guess. Make this a loop?
-      if (numGuesses === 5) {
-        document.getElementById("guess1").style.visibility = "visible";
-      } else if (numGuesses === 4) {
-        document.getElementById("guess2").style.visibility = "visible";
-      } else if (numGuesses === 3) {
-        document.getElementById("guess3").style.visibility = "visible";
-      } else if (numGuesses === 2) {
-        document.getElementById("guess4").style.visibility = "visible";
-      } else if (numGuesses === 1) {
-        document.getElementById("guess5").style.visibility = "visible";
-      } else if (numGuesses === 0) {
-        document.getElementById("guess6").style.visibility = "visible";
-      }   
+      //Displays the correct image for each incorrect guess
+      if (numGuesses <= 6) {
+        document.getElementById("guess" + numGuesses).style.visibility = "visible";
+      } 
     }
 
     var countBlank = 0;
@@ -108,13 +110,18 @@ function pressKey(event) {
           start();
           //I want to make it so I dont have to reload and I can get images to show correctly. But this will do for now
         });
-
     }
-    if (numGuesses === 0){
+    if (numGuesses === 0) {
       document.removeEventListener("keyup", pressKey);
       document.getElementById("you-lose").style.display = "block"; //Show you lose graphic
       document.getElementById("play-again").style.display = "inline-block"; //Show play again button
-      document.getElementById("play-again").addEventListener("click", function() {
+      for (var i=0; i<letters.length; i++){
+        letters[i] = secretWord[i];
+      }
+      document.getElementById("current-word").innerHTML = letters.join(" "); //Place on page and join array
+      document
+        .getElementById("play-again")
+        .addEventListener("click", function() {
           //I want to make it so I dont have to reload and I can get images to show correctly. But this will do for now
           var pirateImages = document.getElementsByClassName("hang-img");
           for (var i = 0; i < pirateImages.length; i += 1) {
@@ -123,6 +130,6 @@ function pressKey(event) {
           }
           start();
         });
+    }
   }
-}
 }
