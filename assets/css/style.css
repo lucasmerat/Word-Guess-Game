@@ -44,3 +44,16 @@ p {
     display:none;
 }
 
+#all-guesses {
+    width:520px;
+    display:block !important;
+}
+
+#boxed-game {
+    border: 3px dotted black;
+}
+
+#wins, #num-guesses {
+    font-size:1.5em;
+}
+
